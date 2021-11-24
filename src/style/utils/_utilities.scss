@@ -1,0 +1,7 @@
+.fs {
+  @include modifiers($font-sizes, "font-size");
+}
+
+.fw {
+  @include modifiers($font-weight, "font-weight");
+}

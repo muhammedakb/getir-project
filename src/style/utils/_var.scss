@@ -1,0 +1,41 @@
+$font-weight: (
+  normal: 400,
+  600: 600,
+  bold: 700,
+);
+
+$font-sizes: (
+  12: 12px,
+  13: 13px,
+  14: 14px,
+  15: 15px,
+  20: 20px,
+);
+
+// COLORS
+$white-base: #ffffff;
+$white-50: #fefefe;
+$white-100: #fafafa;
+
+$blue-base: #1ea4ce;
+$blue-dark: #147594;
+
+$black-base: #191919;
+$black-600: #525252;
+$black-500: #6f6f6f;
+$black-300: #a8a8a8;
+$black-100: #e0e0e0;
+$black-50: #f4f4f4;
+
+$grayscale-500: #697488;
+$grayscale-400: #c4c4c4;
+$grayscale-300: #dfdee2;
+$grayscale-200: #f2f0fd;
+$grayscale-100: #f3f0fe;
+
+// FLEX
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
