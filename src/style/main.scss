@@ -8,6 +8,11 @@
 
 @import "./globals";
 
+// LAYOUTS
+@import "./layouts/Header";
+@import "./layouts/Filters";
+
 // COMPONENTS
-@import "./components/Header";
 @import "./components/Basket";
+@import "./components/Sorting";
+@import "./components/Filter";

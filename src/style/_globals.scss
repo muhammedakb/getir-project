@@ -14,4 +14,9 @@ body {
   background-color: $white-100;
   min-width: 1440px;
   min-height: 1482px;
+  .main-layout {
+    width: 1440px;
+    padding: 40px 104px;
+    margin: 0 auto;
+  }
 }
