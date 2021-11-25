@@ -33,9 +33,3 @@ $grayscale-300: #dfdee2;
 $grayscale-200: #f2f0fd;
 $grayscale-100: #f3f0fe;
 
-// FLEX
-@mixin center-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
