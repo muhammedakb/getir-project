@@ -1,5 +1,4 @@
 // GLOBAL & UTILS
-
 @import "./utils/font";
 @import "./utils/var";
 @import "./utils/functions";
@@ -11,8 +10,12 @@
 // LAYOUTS
 @import "./layouts/Header";
 @import "./layouts/Filters";
+@import "./layouts/Products";
 
 // COMPONENTS
 @import "./components/Basket";
 @import "./components/Sorting";
 @import "./components/Filter";
+@import "./components/TypeFilter";
+@import "./components/Product";
+@import "./components/BasketDetail";

@@ -1,0 +1,149 @@
+.basket-detail {
+  width: 18.5rem;
+  height: 21.14rem;
+  position: relative;
+  margin-left: 1rem;
+  border: 8px solid $blue-base;
+  background: $blue-base;
+  border-radius: 2px;
+  &-border {
+    width: 100%;
+    height: 100%;
+    max-height: 257px;
+    padding: 8px 1rem 1rem 1rem;
+    border-radius: 2px;
+    background: $white-base;
+    overflow-y: scroll;
+    overflow-x: none;
+    &::-webkit-scrollbar {
+      width: 4px;
+      &-thumb {
+        background: $black-300;
+        border-radius: 4px;
+        &:hover {
+          background: $black-500;
+        }
+      }
+    }
+    &.no-data {
+      max-height: 323px;
+      @include center-flex;
+      flex-direction: column;
+      text-align: center;
+      font-family: Open Sans;
+
+      h3 {
+        margin-top: 1rem;
+      }
+      p {
+        margin-top: 1rem;
+        font: {
+          size: 14px;
+          weight: 400;
+        }
+      }
+    }
+  }
+  &-product {
+    height: 73.58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $black-50;
+    &-infos {
+      font: {
+        family: Open Sans;
+        size: 14px;
+      }
+      &-name {
+        color: $black-base;
+        max-width: 120px;
+        text-transform: capitalize;
+        overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      &-value {
+        font-weight: 600;
+        color: $blue-base;
+        margin-top: 4px;
+      }
+    }
+    &-quantity {
+      width: 74px;
+      margin-right: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button {
+        cursor: pointer;
+      }
+      &-decrement {
+        span {
+          display: block;
+          width: 10px;
+          height: 2px;
+          background-color: $blue-base;
+          border-radius: 1px;
+        }
+      }
+      &-value {
+        width: 2rem;
+        height: 2rem;
+        background-color: $blue-base;
+        color: $white-base;
+        font: {
+          family: Open Sans;
+          weight: 700;
+          size: 15px;
+        }
+        @include center-flex;
+      }
+      &-increment {
+        background-color: transparent;
+        span {
+          --b: 2px; /* the thickness */
+          width: 10px; /* the size */
+          aspect-ratio: 1/1;
+          display: inline-block;
+          background: conic-gradient(
+              from 90deg at var(--b) var(--b),
+              #fff 90deg,
+              $blue-base 0
+            )
+            calc(100% + var(--b) / 2) calc(100% + var(--b) / 2) /
+            calc(50% + var(--b)) calc(50% + var(--b));
+        }
+      }
+    }
+  }
+  &-footer {
+    display: block;
+    position: absolute;
+    height: 67px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-radius: 0px 0px 2px 2px;
+  }
+  &-result {
+    position: absolute;
+    width: 92px;
+    height: 51px;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: $white-base;
+    color: $blue-base;
+    border: 2px solid $blue-base;
+    border-radius: 2px;
+    @include center-flex;
+    font: {
+      family: Open Sans;
+      weight: 600;
+      size: 14px;
+    }
+  }
+}

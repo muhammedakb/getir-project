@@ -36,6 +36,7 @@
       height: 130px;
       padding-top: 5px;
       overflow-y: scroll;
+      overflow-x: hidden;
       &::-webkit-scrollbar {
         width: 4px;
         &-thumb {

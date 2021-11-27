@@ -5,8 +5,16 @@ const Basket = ({ price }) => {
     <div className="header-basket">
       <img src={BasketIcon} alt="ico" />
       <div className="header-basket-price">
-        <span className="header-basket-price-lira">₺</span>
-        <span className="header-basket-price-value">{price}</span>
+        {price ? (
+          <>
+            <span className="header-basket-price-lira">₺</span>
+            <span className="header-basket-price-value">{price}</span>
+          </>
+        ) : (
+          <>
+            <span className="header-basket-price-lira">Sepet boş</span>
+          </>
+        )}
       </div>
     </div>
   );

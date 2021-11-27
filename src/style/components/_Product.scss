@@ -1,0 +1,78 @@
+.product {
+  width: 7.75rem;
+  height: 14.0625rem;
+  position: relative;
+
+  &:not(:nth-child(4n + 1)) {
+    margin-left: 1.5rem;
+  }
+  &:not(:nth-child(-n + 4)) {
+    margin-top: 1.25rem;
+  }
+  &-figure {
+    width: 100%;
+    height: 7.75rem;
+    padding: 1rem;
+    border: 1.17666px solid $grayscale-100;
+    border-radius: 12px;
+    @include center-flex;
+    img {
+      width: 5.75rem;
+      height: 5.75rem;
+      position: relative;
+      object-fit: cover;
+      &::before {
+        position: absolute;
+        content: "";
+        display: block;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $grayscale-400;
+      }
+    }
+  }
+  &-info {
+    font: {
+      family: Open Sans;
+      size: 14px;
+      weight: 600;
+    }
+    &-price {
+      color: $blue-base;
+      margin-top: 0.5rem;
+      &-lira {
+        font-weight: 400;
+      }
+      &-value {
+        font-weight: 700;
+        margin-left: 3px;
+      }
+    }
+    &-name {
+      color: $black-base;
+      text-transform: capitalize;
+      max-width: 7.75rem;
+      margin-top: 4px;
+    }
+    &-button {
+      position: absolute;
+      width: 100%;
+      height: 22px;
+      // margin-top: 0.5rem;
+      bottom: 2px;
+      background-color: $blue-base;
+      color: $white-base;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 600;
+      @include center-flex;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+  }
+}

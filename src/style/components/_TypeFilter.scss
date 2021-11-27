@@ -1,0 +1,26 @@
+.type-filter {
+  width: 4rem;
+  height: 2rem;
+  @include center-flex;
+  border-radius: 2px;
+  cursor: pointer;
+  font: {
+    family: Open Sans;
+    weight: 600;
+    size: 13px;
+  }
+  background-color: $grayscale-200;
+  color: $blue-base;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+  &.selected {
+    background-color: $blue-base;
+    color: $grayscale-200;
+  }
+
+  &:not(:first-child) {
+    margin-left: 8px;
+  }
+}

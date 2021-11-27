@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCompaniesAsync } from "../stores/companies";
 import { getItemsAsync } from "../stores/items";
@@ -34,17 +34,14 @@ const Filter = ({ type }) => {
             />
             <div className="filters-side-box-checkboxes">
               {companiesData.map((company) => (
-                <>
-                  <div
-                    key={company.account}
-                    className="filters-side-box-checkboxes-item"
-                  >
+                <React.Fragment key={company.account}>
+                  <div className="filters-side-box-checkboxes-item">
                     <input type="checkbox" name="checkbrand" id="checkbrand" />
                     <p className="filters-side-box-checkboxes-item-name">
                       {company.name} <span>(18)</span>
                     </p>
                   </div>
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -61,15 +58,15 @@ const Filter = ({ type }) => {
             />
             <div className="filters-side-box-checkboxes">
               {itemsData.map((items, index) => (
-                <>
+                <React.Fragment key={index}>
                   {/* {console.log(items.tags.lenght)} */}
-                  <div key={index} className="filters-side-box-checkboxes-item">
+                  <div className="filters-side-box-checkboxes-item">
                     <input type="checkbox" name="checktag" id="checktag" />
                     <p className="filters-side-box-checkboxes-item-name">
                       {findDuplicates(items.tags)} <span>(18)</span>
                     </p>
                   </div>
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>
