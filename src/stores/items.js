@@ -27,6 +27,7 @@ export const items = createSlice({
     items: [],
     basket: [],
     totalBasketAmount: 0,
+    paginationLength: 0,
     isLoading: false,
     error: null,
   },
@@ -57,6 +58,9 @@ export const items = createSlice({
         .map((item) => item.price)
         .reduce((prev, curr) => prev + curr, 0);
     },
+    // getPagination: (state, action) => {
+    //   state.paginationLength = Math.round(state.items.length / 16);
+    // },
   },
   extraReducers: {
     // GET ALL ITEMS
@@ -65,6 +69,7 @@ export const items = createSlice({
     },
     [getItemsAsync.fulfilled]: (state, action) => {
       state.items = action.payload;
+      state.paginationLength = Math.round(state.items.length / 16);
       state.isLoading = false;
     },
     [getItemsAsync.rejected]: (state, action) => {
@@ -92,6 +97,7 @@ export const {
   removeToBasket,
   incrementQuantity,
   decrementQuantity,
-  getTotalAmount 
+  getTotalAmount,
+  // getPagination
 } = items.actions;
 export default items.reducer;

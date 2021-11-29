@@ -26,4 +26,23 @@
     flex-wrap: wrap;
     justify-content: flex-start;
   }
+  &-footer {
+    width: 212px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    font: {
+      family: Open Sans;
+      size: 13px;
+      weight: 400;
+    }
+    color: $blue-base;
+    &-circle {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: $blue-base;
+    }
+  }
 }
