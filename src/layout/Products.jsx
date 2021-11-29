@@ -1,7 +1,7 @@
 import Product from "../components/Product";
 import TypeFilter from "../components/TypeFilter";
 import { useSelector, useDispatch } from "react-redux";
-import { getItemsAsync } from "../stores/items";
+import { getItemsAsync, filterItemsType } from "../stores/items";
 import { useEffect } from "react";
 
 const Products = () => {
@@ -11,6 +11,10 @@ const Products = () => {
   const isLoading = useSelector((state) => state.items.isLoading);
   const errorData = useSelector((state) => state.items.error);
 
+  const getFilteredItems = (type) => {
+    dispatch(filterItemsType(type));
+  };
+
   useEffect(() => {
     dispatch(getItemsAsync());
   }, [dispatch]);
@@ -19,8 +23,8 @@ const Products = () => {
     <div className="products-page">
       <h1 className="products-page-title">Products</h1>
       <div className="products-page-filter">
-        <TypeFilter type="mug" />
-        <TypeFilter type="shirt" />
+        <TypeFilter type="mug" getFilter={getFilteredItems} />
+        <TypeFilter type="shirt" getFilter={getFilteredItems} />
       </div>
       <section className="products-page-products">
         {isLoading && <div>LOADING...</div>}

@@ -6,7 +6,7 @@ const Header = () => {
     <header className="page-header">
       <div className="page-header-container">
         <img className="page-header-logo" src={Logo} alt="MARKET" />
-        <Basket price={""} />
+        <Basket />
       </div>
     </header>
   );

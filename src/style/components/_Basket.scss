@@ -1,19 +1,29 @@
 .header-basket {
+  position: relative;
   height: 100%;
   width: 129px;
   margin-left: 414px;
   background-color: $blue-dark;
   color: $white-base;
-  @include center-flex;
+  display: flex;
+  align-items: center;
+  img {
+    position: absolute;
+    left: 24px;
+  }
   font : {
     family: Open Sans;
     size: 14px;
     weight: 600;
   }
   &-price {
-    margin-left: 13px;
+    position: absolute;
+    right: 24px;
+    &-lira:last-child {
+      font-size: 12px;
+    }
     &-value {
-      margin-left: 5px;
+      margin-left: 4px;
     }
   }
 }

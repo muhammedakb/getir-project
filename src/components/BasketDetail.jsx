@@ -1,45 +1,82 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  removeToBasket,
+  // decrementQuantity,
+  incrementQuantity,
+  getTotalAmount,
+} from "../stores/items";
+import { formatMoney } from "../helpers/moneyFormatter";
 
 const BasketDetail = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [item, setİtem] = useState(true);
-  const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
 
-  const decrement = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [item, setİtem] = useState(false);
+  const [quantity, setQuantity] = useState();
+
+  const decrement = (itemName) => {
     if (quantity !== 0) {
       setQuantity(quantity - 1);
+      // if(quantity === 1) {}
     }
+    dispatch(removeToBasket(itemName));
   };
+
+  const basketData = useSelector((state) => state.items.basket);
+  const totalBasketAmount = useSelector(
+    (state) => state.items.totalBasketAmount
+  );
+  const isEmpty = basketData.length;
+
+  useEffect(() => {
+    const getProducts = () => {
+      isEmpty > 0 ? setİtem(true) : setİtem(false);
+    };
+    getProducts();
+    dispatch(getTotalAmount());
+  }, [isEmpty, dispatch]);
+
   return (
     <div className="basket-detail">
       {item ? (
         <div className="basket-detail-border">
-          <div className="basket-detail-product">
-            <div className="basket-detail-product-infos">
-              <p className="basket-detail-product-infos-name">
-                example product
-              </p>
-              <p className="basket-detail-product-infos-value">₺14,99</p>
-            </div>
-            <div className="basket-detail-product-quantity">
-              <button
-                className="basket-detail-product-quantity-decrement"
-                onClick={decrement}
-              >
-                <span></span>
-              </button>
-              <p className="basket-detail-product-quantity-value">{quantity}</p>
-              <button
-                className="basket-detail-product-quantity-increment"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                <span></span>
-              </button>
-            </div>
-          </div>
+          {/* here */}
+          {basketData.map((items, index) => (
+            <React.Fragment key={index}>
+              <div className="basket-detail-product">
+                <div className="basket-detail-product-infos">
+                  <p className="basket-detail-product-infos-name">
+                    {items.name}
+                  </p>
+                  <p className="basket-detail-product-infos-value">
+                    ₺{formatMoney(items.price)}
+                  </p>
+                </div>
+                <div className="basket-detail-product-quantity">
+                  <button
+                    className="basket-detail-product-quantity-decrement"
+                    onClick={() => decrement(items.name)}
+                  >
+                    <span></span>
+                  </button>
+                  <p className="basket-detail-product-quantity-value">
+                    {items.quantity}
+                  </p>
+                  <button
+                    className="basket-detail-product-quantity-increment"
+                    onClick={() => dispatch(incrementQuantity(items.name))}
+                  >
+                    <span></span>
+                  </button>
+                </div>
+              </div>
+            </React.Fragment>
+          ))}
+          {/* here end */}
           <div className="basket-detail-footer">
             <div className="basket-detail-result">
-              ₺<span>39,97</span>
+              ₺<span>{formatMoney(totalBasketAmount)}</span>
             </div>
           </div>
         </div>
