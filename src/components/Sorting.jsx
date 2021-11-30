@@ -1,3 +1,11 @@
+import { useDispatch } from "react-redux";
+import {
+  priceLowToHigh,
+  priceHighToLow,
+  newToOld,
+  oldToNew,
+} from "../stores/items";
+
 const sortingData = [
   {
     // selected: false,
@@ -18,6 +26,28 @@ const sortingData = [
 ];
 
 const Sorting = ({ select, setSelect }) => {
+  const dispatch = useDispatch();
+
+  const sortItems = (text) => {
+    switch (text) {
+      case "Price low to high":
+        dispatch(priceLowToHigh());
+        break;
+      case "Price high to low":
+        dispatch(priceHighToLow());
+        break;
+      case "New to old":
+        dispatch(newToOld());
+        break;
+      case "Old to new":
+        dispatch(oldToNew());
+        break;
+      default:
+        console.log("zortt");
+        break;
+    }
+  };
+
   return (
     <div className="sorting-side">
       <p className="sorting-side-title">Sorting</p>
@@ -28,6 +58,7 @@ const Sorting = ({ select, setSelect }) => {
               className="sorting-side-box-item-btn"
               onClick={() => {
                 setSelect(item.text);
+                sortItems(item.text);
               }}
             >
               <div

@@ -22,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "items": "json-server --watch -p 5000 data/items.json",
+    "companies": "json-server --watch -p 8080 data/companies.json"
   },
   "eslintConfig": {
     "extends": [

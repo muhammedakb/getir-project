@@ -27,21 +27,18 @@ export const items = createSlice({
     items: [],
     basket: [],
     totalBasketAmount: 0,
-    paginationLength: 0,
     isLoading: false,
     error: null,
   },
   reducers: {
     addToBasket: (state, action) => {
       state.basket.push(action.payload);
-      // console.log(typeof state.basket);
     },
     removeToBasket: (state, action) => {
       // mutate
       state.basket = state.basket.filter(
         (item) => item.name !== action.payload
       );
-      // console.log(state.basket);
     },
     incrementQuantity: (state, action) => {
       state.basket
@@ -58,9 +55,18 @@ export const items = createSlice({
         .map((item) => item.price)
         .reduce((prev, curr) => prev + curr, 0);
     },
-    // getPagination: (state, action) => {
-    //   state.paginationLength = Math.round(state.items.length / 16);
-    // },
+    priceLowToHigh: (state, action) => {
+      state.items = state.items.sort((a, b) => a.price - b.price);
+    },
+    priceHighToLow: (state, action) => {
+      state.items = state.items.sort((a, b) => b.price - a.price);
+    },
+    newToOld: (state, action) => {
+      state.items = state.items.reverse();
+    },
+    oldToNew: (state, action) => {
+      state.items = state.items.reverse();
+    },
   },
   extraReducers: {
     // GET ALL ITEMS
@@ -69,7 +75,6 @@ export const items = createSlice({
     },
     [getItemsAsync.fulfilled]: (state, action) => {
       state.items = action.payload;
-      state.paginationLength = Math.round(state.items.length / 16);
       state.isLoading = false;
     },
     [getItemsAsync.rejected]: (state, action) => {
@@ -98,6 +103,9 @@ export const {
   incrementQuantity,
   decrementQuantity,
   getTotalAmount,
-  // getPagination
+  priceLowToHigh,
+  priceHighToLow,
+  newToOld,
+  oldToNew,
 } = items.actions;
 export default items.reducer;

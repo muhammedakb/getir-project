@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCompaniesAsync } from "../stores/companies";
 import { getItemsAsync } from "../stores/items";
 
 const Filter = ({ type }) => {
+  const [tag, setTag] = useState([]);
   const dispatch = useDispatch();
 
   const companiesData = useSelector((state) => state.companies.items);
@@ -20,6 +21,33 @@ const Filter = ({ type }) => {
   const findDuplicates = (arr) => {
     return Array.from(new Set(arr));
   };
+
+  const x = itemsData
+    .map((item) => item.tags.length)
+    .filter((item) => item < 2);
+  const y = itemsData
+    .filter((item) => item.tags.length < 2)
+    .map((item) => item.tags);
+  const z = itemsData
+    .filter((item) => item.tags.length > 1)
+    .map((item) => item.tags);
+
+  // max uzunluk 7
+
+  // TODO : reduxta yap bunu
+  useEffect(() => {
+    const getTags = () => {
+      for (let i = 0; i < z.length; i++) {
+        z[i].map((item) => setTag(item));
+      }
+      for (let j = 0; j < y.length; j++) {
+        y[j].map((item) => setTag(item));
+      }
+    };
+    getTags();
+  }, [z, y]);
+
+  // console.log(tag);
   return (
     <div className="filters-side">
       {type === "brands" ? (

@@ -62,7 +62,7 @@ const Pagination = ({ itemsPerPage }) => {
           <ReactPaginate
             nextLabel={`Next`}
             onPageChange={handlePageClick}
-            pageRangeDisplayed={4}
+            pageRangeDisplayed={1}
             pageCount={pageCount}
             previousLabel="Prev"
             pageClassName="page-item"
