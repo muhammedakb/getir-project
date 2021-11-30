@@ -1,15 +1,11 @@
-import { useState } from "react";
-
-const TypeFilter = ({ type, getFilter }) => {
-  const [select, setSelect] = useState(false);
-
+const TypeFilter = ({ type, getFilter, selected, setSelected }) => {
   return (
     <div
       onClick={() => {
-        setSelect(!select);
         getFilter(type);
+        setSelected(type);
       }}
-      className={`type-filter ${select ? "selected" : ""}`}
+      className={`type-filter ${selected === type ? "selected" : ""}`}
     >
       <span className="type-filter-text">{type}</span>
     </div>

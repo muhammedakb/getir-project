@@ -1,0 +1,55 @@
+.pagination {
+  width: 88%;
+  height: 40px;
+  margin-top: 32px;
+  margin-left: 6%;
+  display: flex;
+  align-items: center;
+  font : {
+    family: Open Sans;
+    weight: 600;
+    size: 14px;
+  }
+  color: $grayscale-500;
+  &-prev {
+    transform: rotate(180deg);
+  }
+  img {
+    margin-top: 34px;
+  }
+  &-numbers {
+    width: calc(32px * 16);
+    position: relative;
+    ul {
+      margin-left: 5rem;
+      .page-item {
+        width: 32px;
+        height: 40px;
+        border-radius: 2px;
+        @include center-flex;
+        cursor: pointer;
+        margin-left: 10px;
+        &:hover {
+          color: $blue-base;
+        }
+        &.active {
+          color: $white-base;
+          background-color: $blue-base;
+        }
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+        &:first-child {
+          position: absolute;
+          left: 8px;
+        }
+        &:last-child {
+          position: absolute;
+          right: 12px;
+        }
+      }
+    }
+  }
+}
