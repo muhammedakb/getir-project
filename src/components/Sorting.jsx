@@ -1,27 +1,23 @@
-import { useState } from "react";
-
 const sortingData = [
   {
-    selected: false,
+    // selected: false,
     text: "Price low to high",
   },
   {
-    selected: false,
+    // selected: false,
     text: "Price high to low",
   },
   {
-    selected: false,
+    // selected: false,
     text: "New to old",
   },
   {
-    selected: false,
+    // selected: false,
     text: "Old to new",
   },
 ];
 
-const Sorting = () => {
-  const [selected, setSelected] = useState(false);
-
+const Sorting = ({ select, setSelect }) => {
   return (
     <div className="sorting-side">
       <p className="sorting-side-title">Sorting</p>
@@ -31,25 +27,15 @@ const Sorting = () => {
             <button
               className="sorting-side-box-item-btn"
               onClick={() => {
-                setSelected(!selected);
-                console.log(selected);
-                console.log(item.selected);
+                setSelect(item.text);
               }}
             >
               <div
                 className={`sorting-side-box-item-radio ${
-                  selected ? "selected" : ""
+                  select === item.text ? "selected" : ""
                 }`}
               ></div>
-              {/* <input
-                type="radio"
-                name="selected"
-                id="selected"
-                className={`sorting-side-box-item-radio ${
-                  selected ? "selected" : ""
-                }`}
-                checked={selected ? true : false}
-              /> */}
+
               <p className="sorting-side-box-item-text">{item.text}</p>
             </button>
           </div>
