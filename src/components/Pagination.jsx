@@ -5,6 +5,7 @@ import ReactPaginate from "react-paginate";
 import { useSelector, useDispatch } from "react-redux";
 import { getItemsAsync } from "../stores/items";
 
+// props.itemsPerPage = sayfa başına listelenen item sayısını belirtir
 const Pagination = ({ itemsPerPage }) => {
   const dispatch = useDispatch();
   // We start with an empty list of items.
@@ -25,19 +26,13 @@ const Pagination = ({ itemsPerPage }) => {
   useEffect(() => {
     // Fetch items from another resources.
     const endOffset = itemOffset + itemsPerPage;
-    // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     setCurrentItems(itemsData.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(itemsData.length / itemsPerPage));
   }, [itemOffset, itemsData, itemsPerPage]);
 
-  // console.log("currentItems", currentItems);
-
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % itemsData.length;
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // );
     setItemOffset(newOffset);
   };
 
@@ -54,7 +49,20 @@ const Pagination = ({ itemsPerPage }) => {
               image={""}
             />
           ))}
-        {errorData && <div style={{ color: "red" }}>VERİLER YÜKLENEMEDİ!</div>}
+        {errorData && (
+          <div style={{ color: "red" }}>
+            VERİLER YÜKLENEMEDİ! <br />
+            <br />
+            <p>
+              <b>yarn companies</b> || <b>yarn items</b> komutları ile fake api
+              bağlantısını kurabilirsiniz
+            </p>
+            <p>
+              <b>npm companies</b> || <b>npm items</b> komutları ile fake api
+              bağlantısını kurabilirsiniz
+            </p>
+          </div>
+        )}
       </section>
       <section className="pagination">
         <img src={Arrow} alt="<-" className="pagination-prev" />

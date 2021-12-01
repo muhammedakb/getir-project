@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCompaniesAsync } from "../stores/companies";
 import { getItemsAsync } from "../stores/items";
 
+// props.type = brand ve tag olmak üzere 2 adet tip alabilir
+// gelen tip ne ise onun datalarını dönecek şekilde reusable component oluşturulmuştur.
+
 const Filter = ({ type }) => {
+  // eslint-disable-next-line no-unused-vars
   const [tag, setTag] = useState([]);
   const dispatch = useDispatch();
 
@@ -64,7 +68,11 @@ const Filter = ({ type }) => {
               {companiesData.map((company) => (
                 <React.Fragment key={company.account}>
                   <div className="filters-side-box-checkboxes-item">
-                    <input type="checkbox" name="checkbrand" id="checkbrand" />
+                    <input
+                      type="checkbox"
+                      name={company.slug}
+                      id="checkbrand"
+                    />
                     <p className="filters-side-box-checkboxes-item-name">
                       {company.name} <span>(18)</span>
                     </p>

@@ -26,6 +26,7 @@ export const items = createSlice({
   initialState: {
     items: [],
     basket: [],
+    tags: [],
     totalBasketAmount: 0,
     isLoading: false,
     error: null,
@@ -67,6 +68,11 @@ export const items = createSlice({
     oldToNew: (state, action) => {
       state.items = state.items.reverse();
     },
+    getItemTags: (state, action) => {
+      const aloneTag = state.items.filter(item => item.tags.length < 2).map(item => item.tags);
+      const moreTag = state.items.filter(item => item.tags.length > 1).map(item => item.tags);
+      // TODO
+    }
   },
   extraReducers: {
     // GET ALL ITEMS

@@ -11,15 +11,14 @@ import { formatMoney } from "../helpers/moneyFormatter";
 const BasketDetail = () => {
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line no-unused-vars
   const [item, setİtem] = useState(false);
-  const [quantity, setQuantity] = useState();
+  //const [quantity, setQuantity] = useState();
 
   const decrement = (itemName) => {
-    if (quantity !== 0) {
+    /*if (quantity !== 0) {
       setQuantity(quantity - 1);
       // if(quantity === 1) {}
-    }
+    }*/
     dispatch(removeToBasket(itemName));
   };
 

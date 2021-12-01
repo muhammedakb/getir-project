@@ -1,3 +1,7 @@
+// {type, getFilter, selected, setSelected}
+// type = filtrelenecek olan ürünün tipi (ayakkabı, gömlek, bardak...)
+// getFilter = redux tarafında type'a göre atılacak istek
+// selected, setSelected = seçilecek olan filtrenin state'i
 const TypeFilter = ({ type, getFilter, selected, setSelected }) => {
   return (
     <div

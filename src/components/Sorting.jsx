@@ -25,6 +25,8 @@ const sortingData = [
   },
 ];
 
+// {select, setSelect} => props
+// seçilecek olan sıralama filtresinin state'i
 const Sorting = ({ select, setSelect }) => {
   const dispatch = useDispatch();
 

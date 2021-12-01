@@ -2,12 +2,12 @@ import { useDispatch } from "react-redux";
 import { addToBasket } from "../stores/items";
 import { formatMoney } from "../helpers/moneyFormatter";
 
+// {image, price, name}  => props 
+// listelenecek olan itemlerin UI'da gösterilecek bilgileri
+// varsa ? fotoğraf, fiyatı ve ürün adı
 const Product = ({ image, price, name }) => {
   const dispatch = useDispatch();
 
-  // const data = useSelector(state => state.items.basket);
-
-  // console.log(data);
   return (
     <article className="product">
       <div className="product-figure">
