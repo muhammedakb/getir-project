@@ -26,9 +26,9 @@ const Filter = ({ type }) => {
     return Array.from(new Set(arr));
   };
 
-  const x = itemsData
+  /*const x = itemsData
     .map((item) => item.tags.length)
-    .filter((item) => item < 2);
+    .filter((item) => item < 2);*/
   const y = itemsData
     .filter((item) => item.tags.length < 2)
     .map((item) => item.tags);
